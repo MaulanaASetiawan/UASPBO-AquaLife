@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 29, 2024 at 06:20 PM
+-- Generation Time: Jun 06, 2024 at 03:43 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `javafx`
+-- Database: `uaspbo`
 --
 
 -- --------------------------------------------------------
@@ -45,6 +45,22 @@ INSERT INTO `akun` (`id`, `username`, `password`, `role`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `cart`
+--
+
+CREATE TABLE `cart` (
+  `id_cart` int(11) NOT NULL,
+  `id_user` int(255) NOT NULL,
+  `nama_biota` text NOT NULL,
+  `jenis_biota` text NOT NULL,
+  `harga_biota` int(255) NOT NULL,
+  `quantity` int(255) NOT NULL,
+  `total_harga` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `hewan`
 --
 
@@ -52,8 +68,9 @@ CREATE TABLE `hewan` (
   `id` int(11) NOT NULL,
   `nama` text NOT NULL,
   `jenis` text NOT NULL,
-  `habitat` text NOT NULL,
-  `populasi` text NOT NULL,
+  `harga` int(255) NOT NULL,
+  `stok` int(255) NOT NULL,
+  `status` text NOT NULL,
   `tanggal` date NOT NULL,
   `gambar` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -62,17 +79,33 @@ CREATE TABLE `hewan` (
 -- Dumping data for table `hewan`
 --
 
-INSERT INTO `hewan` (`id`, `nama`, `jenis`, `habitat`, `populasi`, `tanggal`, `gambar`) VALUES
-(1, 'Steller\'s Sea Cow', 'Mamalia Laut', 'Laut Bering dan Laut Okhotsk', 'Punah', '2009-05-06', 'file:/C:/Users/Toby/Desktop/ImgPBO/SeaCow.jpg'),
-(2, 'Caribbean Monk Seal', 'Mamalia Laut', 'Karibia dan Teluk Meksiko', 'Punah', '2007-01-10', 'file:/C:/Users/Toby/Desktop/ImgPBO/Caribbean%20Monk.jpg'),
-(3, 'Vaquita', 'Mamalia Laut', 'Teluk California, Meksiko', 'Terancam Punah', '2011-06-02', 'file:/C:/Users/Toby/Desktop/ImgPBO/Vaquita.jpg'),
-(4, 'Hawksbill Turtle', 'Reptil Laut', 'Terumbu karang', 'Terancam Punah', '2020-03-15', 'file:/C:/Users/Toby/Desktop/ImgPBO/Hawksbill%20Turtle.jpg'),
-(5, 'Sawfish', 'Ikan', 'Pantai tropis dan subtropis', 'Terancam Punah', '2019-09-11', 'file:/C:/Users/Toby/Desktop/ImgPBO/SawFish.jpg'),
-(6, 'Great White Shark', 'Ikan', 'Lautan global', 'Stabil', '2023-08-14', 'file:/C:/Users/Toby/Desktop/ImgPBO/Great%20White%20Shark.jpg'),
-(7, 'Green Sea Turtle', 'Reptil Laut', 'Perairan tropis dan subtropis', 'Stabil', '2024-02-12', 'file:/C:/Users/Toby/Desktop/ImgPBO/Green%20Sea%20Turtle.jpg'),
-(8, 'Blue Tang', 'Ikan', 'Terumbu karang', 'Stabil', '2022-06-09', 'file:/C:/Users/Toby/Desktop/ImgPBO/Blue%20Tang.jpg'),
-(9, 'Hiu Goblin', 'Ikan', 'Laut Dalam', 'Punah', '2008-10-15', 'file:/C:/Users/Toby/Desktop/ImgPBO/hiuGoblin.jpg'),
-(10, 'Dugong', 'Mamalia Laut', 'Laut Tropis', 'Terancam Punah', '2022-04-16', 'file:/C:/Users/Toby/Desktop/ImgPBO/Dugong.jpg');
+INSERT INTO `hewan` (`id`, `nama`, `jenis`, `harga`, `stok`, `status`, `tanggal`, `gambar`) VALUES
+(1, 'Ikan Dory', 'Ikan', 20000, 30, 'Tersedia', '2024-06-05', 'file:/C:/Users/Toby/Desktop/ImgPBO/Blue%20Tang.jpg'),
+(2, 'ClownFish', 'Ikan', 20000, 0, 'Habis', '2024-06-07', 'file:/C:/Users/Toby/Desktop/ImgPBO/IkanBadut.png');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transaksi`
+--
+
+CREATE TABLE `transaksi` (
+  `id_transaksi` int(11) NOT NULL,
+  `id_user` int(255) NOT NULL,
+  `nama` text NOT NULL,
+  `jenis` text NOT NULL,
+  `harga` int(255) NOT NULL,
+  `jumlah` int(255) NOT NULL,
+  `total_harga` int(255) NOT NULL,
+  `tanggal` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `transaksi`
+--
+
+INSERT INTO `transaksi` (`id_transaksi`, `id_user`, `nama`, `jenis`, `harga`, `jumlah`, `total_harga`, `tanggal`) VALUES
+(1, 2, 'ClownFish', 'Ikan', 20000, 30, 600000, '2024-06-05');
 
 --
 -- Indexes for dumped tables
@@ -85,10 +118,22 @@ ALTER TABLE `akun`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `cart`
+--
+ALTER TABLE `cart`
+  ADD PRIMARY KEY (`id_cart`);
+
+--
 -- Indexes for table `hewan`
 --
 ALTER TABLE `hewan`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `transaksi`
+--
+ALTER TABLE `transaksi`
+  ADD PRIMARY KEY (`id_transaksi`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -98,13 +143,25 @@ ALTER TABLE `hewan`
 -- AUTO_INCREMENT for table `akun`
 --
 ALTER TABLE `akun`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `cart`
+--
+ALTER TABLE `cart`
+  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `hewan`
 --
 ALTER TABLE `hewan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `transaksi`
+--
+ALTER TABLE `transaksi`
+  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
