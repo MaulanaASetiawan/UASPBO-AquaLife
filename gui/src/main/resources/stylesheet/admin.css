@@ -1,0 +1,102 @@
+.root {
+    -fx-background-color: #003F88;
+    -fx-font-family: "Poppins";
+}
+
+#lblJudul {
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FFD500;
+}
+
+#lblNama, #lblJenis, #lblHarga, #lblStok, #lblStatus {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #00509D;
+}
+
+Label {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FFD500;
+}
+
+#paneData {
+    -fx-background-color: #96B8FA;
+    -fx-background-radius: 10;
+    -fx-border-color: #FDC500;
+    -fx-border-width: 2px;
+    -fx-border-radius: 10;
+}
+
+#imgBiota {
+    -fx-background-color: #FFD500;
+}
+
+Button {
+    -fx-background-color: #00509D;
+    -fx-text-fill: #FFD500;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-border-color: #FDC500;
+    -fx-border-width: 1px;
+}
+
+.combo-box {
+    -fx-background-color: white;
+    -fx-font-size: 14px;
+}
+
+.combo-box .list-cell:hover {
+    -fx-background-color: #ffd166;
+    -fx-text-fill: #00509D;
+}
+
+.combo-box .text {
+    -fx-prompt-text-fill: white;
+}
+
+.date-picker {
+    -fx-font-size: 14px;
+}
+
+.radio-button {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FFD500;
+}
+
+.text-field {
+    -fx-background-color: #f0f0f0;
+    -fx-font-size: 14px;
+}
+
+.table-view {
+    -fx-background-color: #DCE8FF;
+    -fx-font-size: 14px;
+}
+
+.table-column {
+    -fx-font-size: 14px;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #DCE8FF;
+}
+
+.table-row-cell:even {
+    -fx-background-color: #96B8FA;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #003F88;
+    -fx-text-fill: #DCE8FF;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #00509D;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #00509D;
+}

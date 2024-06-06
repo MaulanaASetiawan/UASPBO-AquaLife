@@ -1,0 +1,53 @@
+.root {
+    -fx-background-color: #96B8FA;
+    -fx-font-family: "Poppins";
+}
+
+#lblJudul {
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FEFEFE;
+}
+
+text-field {
+    -fx-background-color: #DCE8FF;
+    -fx-font-size: 14px;
+}
+
+#txtReg {
+    -fx-text-fill: #0D43AA;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+#txtReg:hover {
+    -fx-underline: true;
+}
+
+#txtLog {
+    -fx-text-fill: #0D43AA;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+#txtLog:hover {
+    -fx-underline: true;
+}
+
+Label {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FEFEFE;
+}
+
+Button {
+    -fx-background-color: #0D43AA;
+    -fx-text-fill: #FEFEFE;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+Button:hover {
+    -fx-background-color: #0D43AA;
+    -fx-text-fill: #96B8FA;
+}
